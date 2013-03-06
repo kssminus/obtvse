@@ -27,7 +27,9 @@ group :development do
   # gem 'guard-rspec', '~> 0.6'
   # gem 'guard-spork', '~> 0.5'
   gem 'rails_best_practices', '~> 1'
+  gem 'quiet_assets'
 end
+
 
 group :test do
   gem 'capybara', '~> 1'

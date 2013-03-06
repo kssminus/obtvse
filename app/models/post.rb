@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  belongs_to :category
+
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   acts_as_url :title, :url_attribute => :slug
