@@ -1,3 +1,4 @@
+
 <%= form_for @post do |f| %>
 
 <div id="split">
@@ -15,7 +16,9 @@
       <pre><span></span><br></pre>
       <%= f.text_area :title, :rows => 1, :placeholder => 'Title here' %>
     </div>
-
+    <div>
+      <%= text_field :category, :name, :placeholder => 'Category the post belong to', :id => "category" %>
+    </div>
     <fieldset class="markdown">
       <div id="text-content" class="expandingArea">
         <pre><span></span><br></pre>

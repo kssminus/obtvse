@@ -8,5 +8,7 @@ Obtvse::Application.routes.draw do
   get '/:slug', :to => 'posts#show', :as => 'post'
   delete '/:slug', :to => 'posts#destroy', :as  => 'post'
   put '/:slug', :to => 'posts#update', :as  => 'post'
+  
+  get '/categories/index' => 'categories#index'
   root :to => 'posts#index'
 end

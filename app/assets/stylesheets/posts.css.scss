@@ -102,7 +102,19 @@ header {
     font-weight: 900;
     font-size: 12px;
     border-bottom: 1px solid #ddd;
+    line-height: 0.5em;
   }
+
+  .categoryHead {
+    display: block;
+    padding: 20px 0 20px 50px;
+    background-color: #000;
+    font-weight: 900;
+    font-size: 18px;
+    color: #fff;
+    line-height: 0em;
+  }
+
 }
 
 #content {
