@@ -36,6 +36,17 @@
 
   <div id="container">
     <% unless @no_header %>
+      <% if @category %>
+        <div class="categoryHead">
+          <%= link_to @category.name, category_list_path(@category.name) %>
+        </div>
+      <% else %>
+        <div class="categoryHead">
+          <% @categories.each do |category| %>
+            <%= link_to category.name, category_list_path(category.name) %>
+          <% end %>
+        </div>
+      <% end %>
       <time><% if @post && @post.created_at %>Posted <%= @post.created_at.to_formatted_s(:day_month_year) %><% else %><%= Time.now.to_formatted_s(:day_month_year) %><% end %></time>
     <% end %>
     <div id="content">

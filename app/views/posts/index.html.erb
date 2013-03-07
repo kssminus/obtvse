@@ -1,4 +1,15 @@
 
 <%= session[:text] %>
+<% if @posts.length.eql? 0 %>
+  <div id="content">
+    <section>
+      <h1> No Posts Found </h1>
+      <a class="button space-top" href="<%= root_url %>">Back to Blog</a>
+    </section>
+  </div> 
+<% else %>
+  
 <%= render @posts %>
 <%= paginate @posts %>
+
+<% end %>

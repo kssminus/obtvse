@@ -1,5 +1,5 @@
 $(function() {
-	$('.post').fitVids();
+  $('.post').fitVids();
 
   var printGist = function(gist) {
       console.log(gist.repo, ' (' + gist.description + ') :');
@@ -26,4 +26,18 @@ $(function() {
     $.getGist(this.id, displayGist);
   });
 
+});
+
+// category auto complete
+$(function() {
+  $.ajax({
+    url: '/categories/index.json',
+    dataType: 'json',
+    method: 'get',
+    success: function(cat) {
+      $("#category").autocomplete({
+        source: cat
+      });
+    }
+  });
 });

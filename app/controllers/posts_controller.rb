@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(10).where(draft:false)
+    @categories = Category.all
 
     respond_to do |format|
       format.html
@@ -34,9 +35,11 @@ class PostsController < ApplicationController
   def show
     @single_post = true
     @post = admin? ? Post.find_by_slug(params[:slug]) : Post.find_by_slug_and_draft(params[:slug],false)
+    
 
     respond_to do |format|
       if @post.present?
+        @category = @post.category
         format.html
         format.xml { render :xml => @post }
       else
@@ -59,13 +62,17 @@ class PostsController < ApplicationController
   def edit
     @no_header = true
     @post = Post.find(params[:id])
+    @category = @post.category 
   end
 
   def create
-    @post = Post.new(params[:post])
-
+    Rails.logger.debug params
+    
+    @category = Category.find_or_create_by_name(params["category"])
+    @post = @category.post.build(params[:post])
+    
     respond_to do |format|
-      if @post.save
+      if(@category.save && @post.save)
         format.html { redirect_to "/edit/#{@post.id}", :notice => "Post created successfully" }
         format.xml { render :xml => @post, :status => :created, location: @post }
       else
@@ -77,9 +84,10 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by_slug(params[:slug])
+    @category = Category.find_or_create_by_name(params[:category])
 
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if(@category.save && (@post.category_id = @category.id) && @post.update_attributes(params[:post]))
         format.html { redirect_to "/edit/#{@post.id}", :notice => "Post updated successfully" }
         format.xml { head :ok }
       else
