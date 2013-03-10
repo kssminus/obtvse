@@ -114,14 +114,17 @@ header {
       padding-right: 24px;
       font-weight: 900;
       font-size: 18px;
-      color: #fff;
+      color: #666;
       border: none;
       cursor: pointer;
     }
 
+    a.categoryOn {
+      color: #fff;
+    }
+
   }
 
-  
 }
 
 #content {

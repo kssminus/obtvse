@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def list
+    @categories = Category.all()
     @category = Category.find_by_name(params[:category])
     @posts = @category.post.page(params[:page]).per(10).where(draft:false)
     
