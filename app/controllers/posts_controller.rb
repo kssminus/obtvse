@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate, :except => [:index, :show]
+  before_filter :categorize, :except => [:admin]
   layout :choose_layout
 
   def index
     @posts = Post.page(params[:page]).per(10).where(draft:false)
-    @categories = Category.all
 
     respond_to do |format|
       format.html
@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def preview
     @post = Post.new(params[:post])
     @preview = true
+
     respond_to do |format|
       format.html { render 'show' }
     end

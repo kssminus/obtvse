@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def categorize
+    @categories = Category.all() unless @categoires
+  end
+
 end
