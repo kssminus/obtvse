@@ -30,14 +30,17 @@ $(function() {
 
 // category auto complete
 $(function() {
-  $.ajax({
-    url: '/categories/index.json',
-    dataType: 'json',
-    method: 'get',
-    success: function(cat) {
-      $("#category").autocomplete({
-        source: cat
-      });
-    }
-  });
+  if($("#category").val()){
+    $.ajax({
+      url: '/categories/index.json',
+      dataType: 'json',
+      method: 'get',
+      success: function(cat) {
+        $("#category").autocomplete({
+          source: cat
+        });
+      }
+    });
+  }
 });
+
