@@ -13,7 +13,7 @@
       <% if post.excerpt %><%= markdown(post.excerpt).to_html.html_safe %><% end %>
       <%= link_to "Continue Reading →", post.slug, :class => "button" %>
     <% else %>
-      <% if post.content && @single_post%>
+      <% if (post.content && @single_post) || @preview%>
         <%= markdown(post.content).to_html.html_safe%>
       <% elsif post.content%>
         <%= markdown(post.content.lines.to_a[0...3].join).to_html.html_safe%>
