@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.js
 //= require fitvids.js
 //= require posts.js
-//= require showdown.js
-//= require jquery-ui.js
-//= require_tree ./admin
+//#= require showdown.js
+//#= require showdown_extensions.js
+//= require highlight.min.js
+//#= require_tree ./admin

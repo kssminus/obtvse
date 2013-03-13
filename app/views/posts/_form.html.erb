@@ -1,7 +1,10 @@
-
+<%= javascript_include_tag "showdown.js" %>
+<%= javascript_include_tag "showdown_extensions" %>
+<%= javascript_include_tag "admin/_functions" %>
+<%= javascript_include_tag "admin/editor" %>
 <%= form_for @post do |f| %>
 
-<div id="split">
+<div id="split" class="preview">
   <div id="post-editor" class="split-section">
     <%- if @post.errors.any? -%>
     <div class="notice">

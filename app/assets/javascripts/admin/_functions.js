@@ -1,5 +1,4 @@
-var showdown = new Showdown.converter();
-
+var showdown = new Showdown.converter({extensions: ['video']});
 // Allows for auto expanding textareas
 function makeExpandingArea(container) {
   var area = container.querySelector('textarea'),
@@ -64,4 +63,5 @@ function savePost() {
 
 function updatePreview() {
   $('#post-preview').html('<h1>'+$('#post_title').val()+'</h1>'+showdown.makeHtml($('#post_content').val()));
+  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 }

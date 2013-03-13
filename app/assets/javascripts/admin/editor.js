@@ -38,6 +38,12 @@ $(function() {
         e.preventDefault();
       }
     });
+	
+    $('#post_content,#post_title').bind('keyup', function(){
+      //changed = true;
+      //$('#save-button').val('Save').removeClass('saved').attr('disabled','');
+      updatePreview();
+    });
 
     // Save button validates
     $('#save-button').click(function(e) {
@@ -61,5 +67,7 @@ $(function() {
 
     // Fade out save post notice
     $('.notice').delay(2000).fadeOut(500);
+
+    updatePreview();
   }
 });

@@ -1,46 +1,49 @@
-$(function() {
-  $('.post').fitVids();
+$(document).ready(function() {
 
-  var printGist = function(gist) {
-      console.log(gist.repo, ' (' + gist.description + ') :');
-      console.log(gist.div);
-  };
+  $(function() {
+    $('.post').fitVids();
 
-  var displayGist = function(selector, gistResponse) {
-    $(selector).html(gistResponse.div);
-  };
+    var printGist = function(gist) {
+        console.log(gist.repo, ' (' + gist.description + ') :');
+        console.log(gist.div);
+    };
 
-  // TODO: bad, don't add functions to jQuery
-  $.getGist = function(id, success) {
-    $.ajax({
-          url: 'https://gist.github.com/' + id + '.json',
-          dataType: 'jsonp',
-          success: function(gist) {
-            success("#" + id, gist);
-          }
-      });
-  };
+    var displayGist = function(selector, gistResponse) {
+      $(selector).html(gistResponse.div);
+    };
 
-  // fetch the gists
-  $('.gist').each(function() {
-    $.getGist(this.id, displayGist);
+    // TODO: bad, don't add functions to jQuery
+    $.getGist = function(id, success) {
+      $.ajax({
+            url: 'https://gist.github.com/' + id + '.json',
+            dataType: 'jsonp',
+            success: function(gist) {
+              success("#" + id, gist);
+            }
+        });
+    };
+
+    // fetch the gists
+    $('.gist').each(function() {
+      $.getGist(this.id, displayGist);
+    });
+
   });
 
+  // category auto complete
+  $(function() {
+    if($("#category").val()){
+      $.ajax({
+        url: '/categories/index.json',
+        dataType: 'json',
+        method: 'get',
+        success: function(cat) {
+          $("#category").autocomplete({
+            source: cat
+          });
+        }
+      });
+    }
+  });
+  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 });
-
-// category auto complete
-$(function() {
-  if($("#category").val()){
-    $.ajax({
-      url: '/categories/index.json',
-      dataType: 'json',
-      method: 'get',
-      success: function(cat) {
-        $("#category").autocomplete({
-          source: cat
-        });
-      }
-    });
-  }
-});
-
