@@ -33,13 +33,25 @@
       <a href="http://jmblog.github.com/color-themes-for-highlightjs/">theme</a><br/>
 
       <% if is_admin? %> &nbsp;&middot;&nbsp; <a href="/admin">Admin</a><% end %>
-  </span>
+    </span>
 
   </header>
   <% end %>
 
   <div id="container">
     <% unless @no_header %>
+      <div id='mobileHeader'>
+        <%=  if CONFIG['title'] then link_to CONFIG['title'], root_url end %>
+        <% if CONFIG['twitter'] %>
+          <%= link_to image_tag('twitter.png'), 'http://twitter.com/' + CONFIG['twitter'], :target => '_blank' %>
+        <% end %>
+        <% if CONFIG['github'] %>
+          <%= link_to image_tag('github.png'), 'https://github.com/' + CONFIG['github'], :target => 'blank' %>
+        <% end %>
+        <% if CONFIG['email'] %>
+          <%= link_to image_tag('email.png'), "mailto:#{CONFIG['email']}?subject:whats up!" %>
+        <% end %>
+      </div>
       <div class="categoryHead">
         <% @categories.each do |category| %>
           <% if @category && !(category.name.eql? @category.name)  %>

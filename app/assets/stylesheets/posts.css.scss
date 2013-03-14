@@ -43,7 +43,7 @@ a:visited
 a:active {
   color: #000;
   text-decoration: none;
-  border-bottom: 1px solid #ddd;
+  #border-bottom: 1px solid #ddd;
 }
 
 a:hover,
@@ -95,6 +95,21 @@ header {
   margin-left: 243px;
   position: relative;
 
+  #mobileHeader {
+    display: none;
+    padding: 5px 0 5px 20px;
+    line-height: 1em;
+    font-weight: 900;
+    font-size: 18px;
+    img {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-top: -1px;
+      vertical-align: text-top;
+    }
+  }
+
   time {
     display: block;
     padding: 20px 0 20px 50px;
@@ -127,13 +142,28 @@ header {
 
 }
 
+@media (max-width: 767px) {
+  header {
+    display: none;
+  }
+
+  #container { 
+    margin-left:0px;
+    .contain {
+      width: 90%;
+    }  
+    
+    #mobileHeader {
+      display: block;
+    }
+  }
+} 
 #content {
   section {
     padding: 26px 0 40px 50px;
     border-bottom: 1px solid #ddd;
     position: relative;
   }
-
   h1.external {
     margin-top: 25px;
     font-size: 18px;
@@ -598,3 +628,4 @@ nav.pagination a {
   margin-top:30px;
   padding: 40px 0px 0px 0px;
 }
+
