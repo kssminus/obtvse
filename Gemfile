@@ -17,7 +17,7 @@ gem 'kaminari', '~> 0.13'
 group :production do
   # gem 'newrelic_rpm', '~> 3'
   # gem 'dalli', '~> 1'
-  gem 'pg', '~> 0.13'
+  #gem 'pg', '~> 0.13'
 end
 
 group :development do
@@ -48,4 +48,5 @@ group :assets do
   gem 'sass-rails', '~> 3'
   gem 'coffee-rails', '~> 3'
   gem 'uglifier', '~> 1'
+  gem 'therubyracer', '~> 0.11'
 end
