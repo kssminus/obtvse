@@ -24,7 +24,8 @@
         <li><%= link_to 'Edit', '/edit/' + post.id.to_s unless @preview %></li>
       </ul>
     <%- end -%>
+
+    <%= if @single_post then render :partial => "posts/comment" end %>
   </div>
-  <%= if @single_post then render :partial => "posts/comment" end %>
   <% if @single_post %><a class="button space-top" href="<%= root_url %>categories/<%=@category.name%>">Back to <%= @category.name %></a><% end %>
 </section>
