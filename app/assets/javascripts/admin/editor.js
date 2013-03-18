@@ -56,6 +56,7 @@ $(function() {
       }
     });
 
+/*
     // Options menu
     $('.menu').toggle(function(){
       $(this).addClass('active');
@@ -63,6 +64,13 @@ $(function() {
     }, function() {
       $(this).removeClass('active');
       $($(this).attr('href')).removeClass('visible');
+    });
+*/
+    // Options menu
+    //toggle is deprecated jquery 1.8
+    $('.menu').click(function(){
+      $(this).toggleClass('active');
+      $($(this).attr('href')).toggleClass('visible');
     });
 
     // Fade out save post notice
