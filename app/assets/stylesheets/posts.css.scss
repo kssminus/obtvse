@@ -5,7 +5,6 @@ $linkhover: red;
 div:before, div:after {content:''; display:table; }
 
 aside {position:relative; display:block;}
-ul {list-style-type:none;}
 .hide {visibility:hidden; height:1px; clip:rect(0 0 0 0); position:absolute;}
 input, textarea {outline:none; background:none;}
 
@@ -58,7 +57,9 @@ header {
   top: 0;
   bottom: 0;
   padding: 20px 40px;
-
+  
+  ul {list-style-type:none;}
+  
   span {
     color: #888;
     font-weight: 500;
