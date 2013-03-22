@@ -33,6 +33,10 @@ h1,
   font-size: 35px;
 }
 
+h2:before {
+  content: '#\0000a0';
+}
+
 p {
   color: #555;
 }
@@ -111,7 +115,12 @@ header {
   }
 
   time {
+    position:fixed;
+    width: 100%; 
+    top: 30px;
+    z-index: 1001;
     display: block;
+    background-color: #fff;
     padding: 20px 0 20px 50px;
     text-transform: uppercase;
     font-weight: 900;
@@ -121,7 +130,10 @@ header {
   }
 
   .categoryHead {
+    position: fixed;
+    width: 100%;
     display: block;
+    z-index: 1000;
     padding: 15px 0 15px 50px;
     background-color: #000;
     line-height: 0em;
@@ -155,6 +167,7 @@ header {
   #container { 
     margin-left:0px;
     .categoryHead {
+      position: relative;
       line-height: 3em;
       a { 
         font-size: 3em;
@@ -165,12 +178,20 @@ header {
     time {
       font-size: 2em;
       line-height: 1em;
+      position: relative;
     }
     
     .contain {
       width: 90%;
       h1 {
         font-size: 2em;
+      }
+      
+      code {
+        font-size: 2em;
+      }
+      #toc {
+        display: none;
       }
     }  
     
@@ -182,6 +203,7 @@ header {
 }
 
 #content {
+  padding-top: 60px;
   section {
     padding: 26px 0 40px 50px;
     border-bottom: 1px solid #ddd;
@@ -652,3 +674,53 @@ nav.pagination a {
   padding: 40px 0px 0px 0px;
 }
 
+#toc {
+    top: 77px;
+    left: 71%;
+    height: 100%;
+    position: fixed;
+    background: #333;
+    box-shadow: inset -5px 0 5px 0px #000;
+    width: 150px;
+    padding-top: 60px;
+    color: #fff;
+}
+
+#toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#toc li {
+    padding: 5px 10px;
+}
+
+#toc a {
+    //content: '#\0000a0';
+    line-height: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#toc .h1 {
+    font-size: 15px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#toc .h2 {
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+#toc .h3 {
+    font-size: 10px;
+    padding-left: 20px;
+}
+
+#toc .toc-active {
+    background: #336699;
+    box-shadow: inset -5px 0px 10px -5px #000;
+}

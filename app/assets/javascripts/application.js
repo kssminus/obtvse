@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.js
+//= require jquery.toc.js
 //= require fitvids.js
 //= require posts.js
 //#= require showdown.js

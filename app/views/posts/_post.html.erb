@@ -1,4 +1,5 @@
 <section id="post-<%= post.id %>">
+
   <div class="post contain">
     <%- if post.external? -%>
       <h1 class="external">
@@ -14,6 +15,7 @@
       <%= link_to "Continue Reading →", post.slug, :class => "button" %>
     <% else %>
       <% if (post.content && @single_post) || @preview%>
+        <div id='toc'></div>
         <%= markdown(post.content).to_html.html_safe%>
       <% elsif post.content%>
         <%= markdown(post.content.lines.to_a[0...3].join).to_html.html_safe%>
