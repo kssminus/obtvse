@@ -37,6 +37,11 @@ h2:before {
   content: '#\0000a0';
 }
 
+h3:before {
+  content: '>\0000a0';
+}
+
+
 p {
   color: #555;
 }
