@@ -4,10 +4,17 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    text = gist_embed(text)
+    RedcarpetCompat.new(text, :fenced_code, :gh_blockcode)
+  end
+
+  def markdown_with_youtube(text)
     text = youtube_embed(text)
     text = gist_embed(text)
     RedcarpetCompat.new(text, :fenced_code, :gh_blockcode)
   end
+
+  alias_method_chain :markdown, :youtube  
 
   # TODO refactor these filters so they don't each iterate over all the lines
   def gist_embed(str)

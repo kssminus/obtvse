@@ -9,7 +9,7 @@ xml.rss :version => "2.0" do
       xml.item do
         xml.title post.title
         if post.content
-          xml.description markdown(post.content).to_html
+          xml.description markdown_without_youtube(post.content).to_html
         else
           xml.description "No content"
         end
