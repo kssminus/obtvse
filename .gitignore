@@ -20,3 +20,6 @@
 *.swp
 deploy.rb
 .DS_Store
+
+# Ignore SiteMap
+/public/sitemap.xml

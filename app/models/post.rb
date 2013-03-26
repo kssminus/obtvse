@@ -26,4 +26,9 @@ class Post < ActiveRecord::Base
       content
     end
   end
+
+  def self.published
+    self.where(draft: false)
+  end
+
 end
