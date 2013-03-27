@@ -8,31 +8,31 @@ $.fn.toc = function(options) {
   var headingOffsets = [];
   var activeClassName = opts.prefix+'-active';
 
-    var scrollable;
-    findScrollable(opts.container, 'body', 'html');
-    
-    function findScrollable(els){
-      for(var i = 0; i < arguments.length; i++){
-        $target = $(arguments[i]);
-        if($target.scrollTop() > 0){
-          scrollable = $target;
-          return;
-        }
-        $target.scrollTop(1);
+  var scrollable;
+  findScrollable(opts.container, 'body', 'html');
+  
+  function findScrollable(els){
+    for(var i = 0; i < arguments.length; i++){
+      $target = $(arguments[i]);
+      if($target.scrollTop() > 0){
+        scrollable = $target;
+        return;
       }
-      setTimeout(function(){ decideScrollable(opts.container, 'body', 'html') }, 100);
-    };
+      $target.scrollTop(1);
+    }
+    setTimeout(function(){ decideScrollable(opts.container, 'body', 'html') }, 100);
+  };
 
-    var decideScrollable = function(){
-      for(var i = 0; i < arguments.length; i++){
-        $target = $(arguments[i]);
-        if($target.scrollTop() > 0){
-          scrollable = $target;
-          scrollable.scrollTop(0);
-          return;
-        }
+  var decideScrollable = function(){
+    for(var i = 0; i < arguments.length; i++){
+      $target = $(arguments[i]);
+      if($target.scrollTop() > 0){
+        scrollable = $target;
+        scrollable.scrollTop(0);
+        return;
       }
-    };
+    }
+  };
 
   var scrollTo = function(e) {
     if (opts.smoothScrolling) {
