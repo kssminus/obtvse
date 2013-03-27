@@ -32,18 +32,16 @@ $(document).ready(function() {
 
   // category auto complete
   $(function() {
-    if($("#category").val()){
-      $.ajax({
-        url: '/categories/index.json',
-        dataType: 'json',
-        method: 'get',
-        success: function(cat) {
-          $("#category").autocomplete({
-            source: cat
-          });
-        }
-      });
-    }
+    $.ajax({
+      url: '/categories/index.json',
+      dataType: 'json',
+      method: 'get',
+      success: function(cat) {
+        $("#category").autocomplete({
+          source: cat
+        });
+      }
+    });
   });
   $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 

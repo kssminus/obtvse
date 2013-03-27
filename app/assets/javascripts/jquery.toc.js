@@ -8,24 +8,31 @@ $.fn.toc = function(options) {
   var headingOffsets = [];
   var activeClassName = opts.prefix+'-active';
 
-  var findScrollableElement = function(els) {
-    for (var i = 0, argLength = arguments.length; i < argLength; i++) {
-      var el = arguments[i],
-          $scrollElement = $(el);
-      if ($scrollElement.scrollTop() > 0) {
-        return $scrollElement;
-      } else {
-        $scrollElement.scrollTop(1);
-        var isScrollable = $scrollElement.scrollTop() > 0;
-        $scrollElement.scrollTop(0);
-        if (isScrollable) {
-          return $scrollElement;
+    var scrollable;
+    findScrollable(opts.container, 'body', 'html');
+    
+    function findScrollable(els){
+      for(var i = 0; i < arguments.length; i++){
+        $target = $(arguments[i]);
+        if($target.scrollTop() > 0){
+          scrollable = $target;
+          return;
+        }
+        $target.scrollTop(1);
+      }
+      setTimeout(function(){ decideScrollable(opts.container, 'body', 'html') }, 100);
+    };
+
+    var decideScrollable = function(){
+      for(var i = 0; i < arguments.length; i++){
+        $target = $(arguments[i]);
+        if($target.scrollTop() > 0){
+          scrollable = $target;
+          scrollable.scrollTop(0);
+          return;
         }
       }
-    }
-    return [];
-  };
-  var scrollable = findScrollableElement(opts.container, 'body', 'html');
+    };
 
   var scrollTo = function(e) {
     if (opts.smoothScrolling) {
