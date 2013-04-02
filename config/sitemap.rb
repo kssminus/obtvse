@@ -1,7 +1,7 @@
 Sitemap::Generator.instance.load :host => "devopser.me" do
 
   # Sample path:
-  path :posts
+  # path :posts
   # The specified path must exist in your routes file (usually specified through :as).
 
   # Sample path with params:
@@ -9,7 +9,12 @@ Sitemap::Generator.instance.load :host => "devopser.me" do
   # Depending on the route, the resolved url could be http://mywebsite.com/frequent-questions.html?filter=recent.
 
   # Sample resource:
-  resources :posts, :params => { :format => "html" }, :change_frequecy => "daily"
+  resources :posts, 
+            objects: proc {Post.published }, 
+            change_frequecy: "weekly",
+            skip_index: true,
+            skip_category: true
+
 
   # Sample resource with custom objects:
   #   resources :articles, :objects => proc { Article.published }
