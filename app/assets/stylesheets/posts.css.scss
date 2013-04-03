@@ -729,3 +729,18 @@ nav.pagination a {
     background: #336699;
     box-shadow: inset -5px 0px 10px -5px #000;
 }
+
+//sociable
+.sociable {
+  padding-top: 30px;
+  .fb-like {
+    display: inline-block;
+    padding: 0 5px 0 5px;
+  }
+
+  .tweet { 
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 5px 0 5px;
+  }
+}

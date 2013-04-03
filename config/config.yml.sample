@@ -8,7 +8,7 @@ twitter:             kssminus
 github:              kssminus
 sociable:
   tweet:             true
-  facebook:          false
+  facebook:          true
   google_plus:       true
 #disqus:              YOUR_DISQUS_SHORTNAME #commenting out means using facebook comments box
 #email:               kssminus@gmail.com

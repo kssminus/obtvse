@@ -1,0 +1,53 @@
+<div class="sociable">
+<% if CONFIG['sociable']['facebook'] %>
+  <!-- like button -->
+  <div class="fb-like" data-href="<%= post.url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+  <!-- /like button -->
+<% end %>
+
+<% if CONFIG['sociable']['tweet'] %>
+  <!-- tweet button -->
+  <div class="tweet" >
+    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">tweet</a>
+  </div>
+  <!-- /tweet button -->
+<% end %>
+
+
+<% if CONFIG['sociable']['google_plus'] %>
+  <!-- g plus button -->
+  <div class="g-plusone" data-size="medium"></div>
+  <!-- /g plus button -->
+<% end %>
+
+</div> 
+
+<!-- social plugins sdks -->
+<% if CONFIG['sociable']['facebook'] || !CONFIG['disqus'] %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<% end %>
+
+<% if CONFIG['sociable']['tweet'] %>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<% end %>
+
+<% if CONFIG['sociable']['google_plus'] %>
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ko'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<% end %>
+<!-- /social plugins sdk-->

@@ -16,7 +16,7 @@
     <span><%= CONFIG['tagline'].html_safe %></span>
     <ul>
       <% if CONFIG['twitter'] %>
-        <li><%= link_to '@' + CONFIG['twitter'], 'http://twitter.com/' + CONFIG['twitter'] %></li>
+        <li><%= link_to '@' + CONFIG['twitter'], 'https://twitter.com/intent/tweet?screen_name=' + CONFIG['twitter'], :target => "_blank"  %></li>
       <% end %>
       <% if CONFIG['github'] %>
         <li><%= link_to 'github', 'https://github.com/' + CONFIG['github'] %></li>
