@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
-  before_filter :categorize, :except => [:admin]
+  before_action :authenticate, :except => [:index, :show]
+  before_action :categorize, :except => [:admin]
   layout :choose_layout
 
   def index
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def create
     Rails.logger.debug params
     
-    @category = Category.find_or_create_by_name(params["category"])
+    @category = Category.find_or_create_by(name: params["category"])
     @post = @category.post.build(params[:post])
     
     respond_to do |format|
@@ -85,7 +85,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by_slug(params[:slug])
-    @category = Category.find_or_create_by_name(params[:category])
+    @category = Category.find_or_create_by(name: params[:category])
 
     respond_to do |format|
       if(@category.save && (@post.category_id = @category.id) && @post.update_attributes(params[:post]))

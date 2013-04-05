@@ -18,6 +18,6 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html { render :template => 'posts/index' }
     end
-
   end
+
 end
