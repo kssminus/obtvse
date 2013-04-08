@@ -183,6 +183,7 @@ DEPENDENCIES
   jquery-rails (~> 2)
   jquery-turbolinks
   kaminari (~> 0.13)
+  pg (~> 0.13)
   quiet_assets
   rails (= 4.0.0.beta1)
   rails_best_practices (~> 1)
@@ -192,6 +193,5 @@ DEPENDENCIES
   spork (~> 0.9)
   sqlite3 (~> 1)
   stringex (~> 1)!
-  therubyracer (~> 0.11)
   thin (~> 1)
   uglifier (~> 1)
