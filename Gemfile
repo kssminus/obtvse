@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '= 4.0.0.beta1'
 
 # Extention libraries
-gem 'thin', '~> 1'
+gem 'puma'
 
 # Rendering engines and vendor libraries
 gem 'jquery-rails', '~> 2'
@@ -55,3 +55,5 @@ gem 'jquery-turbolinks'
 
 # ActiveRecord::SessionStore substitution
 gem 'activerecord-session_store'
+
+gem 'redis'

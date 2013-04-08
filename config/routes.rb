@@ -12,5 +12,10 @@ Obtvse::Application.routes.draw do
  
   get '/categories/index' => 'categories#index'
   get '/categories/:category' => 'categories#list', :as => 'category_list'
+
+  get  '/chat/index' => 'chat#index'
+  post '/chat/message' => 'chat#message'
+  get  '/chat/chatroom' => 'chat#chatroom' 
+
   root :to => 'posts#index'
 end
