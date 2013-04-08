@@ -4,7 +4,7 @@ Obtvse::Application.routes.draw do
   get '/new', :to => 'posts#new'
   get '/edit/:id', :to => 'posts#edit'
   post '/preview', :to => 'posts#preview'
-  put '/preview', :to => 'posts#preview'
+  patch '/preview', :to => 'posts#preview'
   get '/:slug', :to => 'posts#show', :as => 'post'
   delete '/:slug', :to => 'posts#destroy', :as  => 'post'
   put '/:slug', :to => 'posts#update', :as  => 'post'

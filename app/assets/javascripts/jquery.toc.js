@@ -18,7 +18,7 @@ $.fn.toc = function(options) {
         scrollable = $target;
         return;
       }
-      $target.scrollTop(1);
+      $target.scrollTop(2);
     }
     setTimeout(function(){ decideScrollable(opts.container, 'body', 'html') }, 100);
   };

@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :category
+  attr_accessor :category_id
 
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true

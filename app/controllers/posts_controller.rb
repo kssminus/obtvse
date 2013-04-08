@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def preview
-    @post = Post.new(params[:post])
+    @post = Post.new(post_params)
     @preview = true
 
     respond_to do |format|
@@ -67,10 +67,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug params
-    
-    @category = Category.find_or_create_by(name: params["category"])
-    @post = @category.post.build(params[:post])
+    @category = Category.find_or_create_by(category_params)
+    @post = @category.post.build(post_params)
     
     respond_to do |format|
       if(@category.save && @post.save)
@@ -84,11 +82,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by_slug(params[:slug])
-    @category = Category.find_or_create_by(name: params[:category])
-
-    respond_to do |format|
-      if(@category.save && (@post.category_id = @category.id) && @post.update_attributes(params[:post]))
+    @post = Post.find_by_slug(post_params[:slug])
+    @category = Category.find_or_create_by(category_params)
+    
+    respond_to do |format| 
+      if @category.save
+        @post.category_id = @category.id
+        @post.update(post_params)
         format.html { redirect_to "/edit/#{@post.id}", :notice => "Post updated successfully" }
         format.xml { head :ok }
       else
@@ -99,7 +99,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by_slug(params[:slug])
+    @post = Post.find_by_slug(post_params[:slug])
     @post.destroy
 
     respond_to do |format|
@@ -120,5 +120,13 @@ class PostsController < ApplicationController
     else
       'application'
     end
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content, :slug, :url, :draft)
+  end
+
+  def category_params
+    params.require(:category).permit(:name)
   end
 end
