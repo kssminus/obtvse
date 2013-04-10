@@ -98,7 +98,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by_slug(post_params[:slug])
+    @post = Post.find_by_slug(params[:id])
     @post.destroy
 
     respond_to do |format|
@@ -122,7 +122,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:id, :title, :content, :slug, :url, :draft)
+     params[:post][:slug] = params[:post][:title].to_url if params[:post][:slug].eql? ""
+     params.require(:post).permit(:id, :title, :content, :slug, :url, :draft)
   end
 
   def category_params
