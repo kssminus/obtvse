@@ -3,7 +3,7 @@ Obtvse::Application.routes.draw do
   get     '/admin',     :to => 'posts#admin'
   get     '/new',       :to => 'posts#new'
   get     '/edit/:id',  :to => 'posts#edit'
-  post    '/preview',   :to => 'posts#preview'
+  patch   '/preview',   :to => 'posts#preview'
   get     '/:slug',     :to => 'posts#show', :as => 'post'
   put     '/:slug',     :to => 'posts#update', :as  => 'post'
   patch   '/:slug',     :to => 'posts#update', :as  => 'post'
