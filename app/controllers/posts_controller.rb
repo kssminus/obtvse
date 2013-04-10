@@ -35,8 +35,7 @@ class PostsController < ApplicationController
 
   def show
     @single_post = true
-    @post = admin? ? Post.find_by_slug(params[:slug]) : Post.find_by_slug_and_draft(params[:slug],false)
-    
+    @post = admin? ? Post.find_by_slug(params[:slug]) : Post.find_by(slug: params[:slug], draft: false)
 
     respond_to do |format|
       if @post.present?
@@ -82,9 +81,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by_slug(post_params[:slug])
+    @post = Post.find(post_params[:id])
     @category = Category.find_or_create_by(category_params)
-    
+
     respond_to do |format| 
       if @category.save
         @post.category_id = @category.id
@@ -123,7 +122,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :slug, :url, :draft)
+    params.require(:post).permit(:id, :title, :content, :slug, :url, :draft)
   end
 
   def category_params
