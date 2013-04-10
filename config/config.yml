@@ -1,11 +1,15 @@
 ---
 title:               Seongsiks
-tagline:             Being A DevOpser.
-login:               <%= ENV["obtvse_login"] ? ENV["obtvse_login"] : "kssminus" %>
-password:            <%= ENV["obtvse_password"] ? ENV["obtvse_password"] : "k36722427" %>
+tagline:             Being A Developer.
+login:               <%= ENV["obtvse_login"] ? ENV["obtvse_login"] : "username" %>
+password:            <%= ENV["obtvse_password"] ? ENV["obtvse_password"] : "password" %>
 name:                Seongsik, Kim
 twitter:             kssminus
 github:              kssminus
-email:               kssminus@gmail.com
-disqus:              seongsiks
-google_analytics_id: UA-39363299-1 
+sociable:
+  tweet:             true
+  facebook:          false
+  google_plus:       true
+#disqus:              YOUR_DISQUS_SHORTNAME #commenting out means using facebook comments box
+#email:               kssminus@gmail.com
+google_analytics_id: YOUR_GA_ID

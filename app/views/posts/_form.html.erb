@@ -11,6 +11,7 @@
     <%- end -%>
 
     <%= link_to '⚓', @post, :class => 'permalink', :target => '_blank' if @post.slug %>
+    <%= f.hidden_field :id %> 
     <div id="text-title" class="expandingArea">
       <pre><span></span><br></pre>
       <%= f.text_area :title, :rows => 1, :placeholder => 'Title here' %>
@@ -34,7 +35,7 @@
     <div class="contain">
       <div class="left">
         <a href="/admin">&laquo; Admin</a>
-        <%= link_to 'Delete', @post, :confirm => 'Are you sure?', :method => :delete, :class => 'delete-bar' %>
+        <%= link_to 'Delete', @post, data: { confirm: 'Are you sure?' }, :method => :delete, :class => 'delete-bar' %>
         <%= link_to 'Options', '#options', :class => 'menu' %>
         <ul id="options" class="sub-menu">
           <li>

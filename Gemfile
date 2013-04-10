@@ -11,7 +11,7 @@ gem 'redcarpet'
 
 # Misc libraries
 # gem 'bcrypt-ruby', '~> 3', require: 'bcrypt'
-gem 'stringex', '~> 1', git: 'git://github.com/rsl/stringex.git'
+gem 'stringex', '~> 1'
 gem 'kaminari', '~> 0.13'
 
 # sitemap generator
