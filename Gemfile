@@ -51,6 +51,7 @@ gem 'sass-rails', '= 4.0.0.beta1'
 #gem 'coffee-rails', '~> 3'
 gem 'uglifier', '~> 1'
 gem 'therubyracer', '~> 0.11'
+gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 # ActiveRecord::SessionStore substitution
