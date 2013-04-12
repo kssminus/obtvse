@@ -7,6 +7,7 @@
   <meta name="author" content="<%= CONFIG['name'] %>">
   <link href="/posts.rss" rel="alternate" title="RSS" type="application/rss+xml" />
   <link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css' />
+  <%= javascript_include_tag 'application' %>
 </head>
 
 <body class="<%= controller_name %> <%= action_name %>">
@@ -71,7 +72,6 @@
     </div>
   </div>
 
-  <%= javascript_include_tag 'application' %>
 
   <% if CONFIG['google_analytics_id'] %>
     <!-- Google Analytics -->

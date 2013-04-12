@@ -31,6 +31,7 @@ group :development do
   # gem 'guard-spork', '~> 0.5'
   gem 'rails_best_practices', '~> 1'
   gem 'quiet_assets'
+  gem 'pry-rails'
 end
 
 

@@ -9,37 +9,37 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305111111) do
+ActiveRecord::Schema.define(version: 20130305111111) do
 
-  create_table "categories", :force => true do |t|
+  create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "posts", :force => true do |t|
+  create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "slug"
     t.text     "content"
-    t.boolean  "draft",       :default => true
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "aside",       :default => false
+    t.boolean  "draft",       default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "aside",       default: false
     t.string   "url"
     t.integer  "parent"
     t.integer  "category_id"
   end
 
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
 end

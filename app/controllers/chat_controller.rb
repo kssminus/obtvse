@@ -1,7 +1,6 @@
 class ChatController < ApplicationController
   include ActionController::Live
 
-
   def index
     @categories = Category.all 
     respond_to do |format|
@@ -11,28 +10,37 @@ class ChatController < ApplicationController
   end
   
   def message 
-    redis = Redis.new
-    if redis.publish('chatroom', params['message'])
-      #redis.quit
-      render json: { result: 'ok'}.to_json
-    else
-      render json: { result: 'error'}.to_json
+    begin
+      redis = Redis.new
+      if redis.publish('chatroom', params['message'])
+        #redis.quit
+        render json: { result: 'ok'}.to_json
+      else
+        render json: { result: 'error'}.to_json
+      end
+    rescue 
+      Rails.logger.fatal "Redis publish exception occur"
+    ensure
+      redis.quit
     end
-    
   end
 
   def chatroom 
-    response.header['Content-Type'] = "text/event-stream"
-    redis = Redis.new
-    redis.subscribe('chatroom') do |on|
-      on.message do |event, data|
-        response.stream.write("data: #{data}\n\n") 
-      end
-    end
-      
-  ensure 
-    response.stream.close
-    #redis.quit
-  end 
   
+    begin
+      response.header['Content-Type'] = "text/event-stream"
+      redis = Redis.new
+      redis.subscribe('chatroom') do |on|
+        on.message do |event, data|
+          response.stream.write("data: #{data}\n\n") 
+        end
+      end
+    rescue IOError
+      Rails.logger.fatal IOError.inspect
+      redis.quit
+    ensure 
+      response.stream.close
+    end 
+  end
+
 end

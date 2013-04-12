@@ -19,5 +19,4 @@
 //#= require showdown.js
 //#= require showdown_extensions.js
 //= require highlight.min.js
-//= require chat
 //#= require_tree ./admin

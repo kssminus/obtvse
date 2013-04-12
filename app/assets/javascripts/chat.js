@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-$(document).ready(initialize);
-function initialize() {
+$(document).ready(chatroom_connect);
+function chatroom_connect() {
   var source = new EventSource('/chat/chatroom');
   source.addEventListener("message", update);
   $("#message_send").click(function(e){
@@ -10,8 +10,6 @@ function initialize() {
 }
 
 function update(event) {
-  console.log("updat");
-  var item = $('<li>').text(event.data);
-  $('#chat_window').append(item);
+  $('#chat_window').append("\n"+event.data);
 }
 
