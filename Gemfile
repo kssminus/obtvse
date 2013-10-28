@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '= 4.0.0.beta1'
+gem 'rails', '~> 4.0.0'
 
 # Extention libraries
 gem 'thin', '~> 1'
@@ -17,6 +17,7 @@ gem 'kaminari', '~> 0.13'
 # sitemap generator
 gem 'sitemap'
 
+gem 'newrelic_rpm', '~> 3'
 group :production do
   # gem 'newrelic_rpm', '~> 3'
   # gem 'dalli', '~> 1'
@@ -47,7 +48,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 1'
 end
 
-gem 'sass-rails', '= 4.0.0.beta1'
+gem 'sass-rails', '~> 4.0.0'
 #gem 'coffee-rails', '~> 3'
 gem 'uglifier', '~> 1'
 gem 'therubyracer', '~> 0.11'

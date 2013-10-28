@@ -4,10 +4,10 @@ Obtvse::Application.routes.draw do
   get     '/new',       :to => 'posts#new'
   get     '/edit/:id',  :to => 'posts#edit'
   patch   '/preview',   :to => 'posts#preview'
-  get     '/:slug',     :to => 'posts#show', :as => 'post'
-  put     '/:slug',     :to => 'posts#update', :as  => 'post'
-  patch   '/:slug',     :to => 'posts#update', :as  => 'post'
-  delete  '/:slug',     :to => 'posts#destroy', :as  => 'post'
+  get     '/:slug',     :to => 'posts#show'
+  put     '/:slug',     :to => 'posts#update'
+  patch   '/:slug',     :to => 'posts#update'
+  delete  '/:slug',     :to => 'posts#destroy'
   
  
   get '/categories/index'     => 'categories#index'
